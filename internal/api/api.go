@@ -24,6 +24,7 @@ func NewRouter() *mux.Router {
 
 // BuyItem is the handler for /buy-item end-point which returns the item if available
 func BuyItem(w http.ResponseWriter, r *http.Request) {
+	// Validation
 	requestedItem := mux.Vars(r)["item"]
 	if requestedItem == "" {
 		w.WriteHeader(http.StatusBadRequest)
@@ -34,6 +35,7 @@ func BuyItem(w http.ResponseWriter, r *http.Request) {
 	order := item.Order{ItemName: requestedItem}
 
 	availableItem := order.BuyItem()
+	// If item is not present, return NOT_FOUND
 	if len(availableItem) == 0 {
 		w.Write([]byte(fmt.Sprintf("NOT_FOUND")))
 		return
@@ -120,6 +122,7 @@ func BuyItemQtyPrice(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// cache is to be used for buy-item-qty-price end point
 	order := item.Order{ItemName: requestedItem, Quantity: &quantity, Price: &requestedPrice[0], UseCache: true}
 	availableItem := order.BuyItem()
 	if len(availableItem) == 0 {

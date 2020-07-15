@@ -17,3 +17,19 @@ $ ./foodaggregator
 
 Started server at port :8080
 ```
+
+End points exposed:
+
+1.   localhost:8080/buy-item/:item
+Eg.: localhost:8080/buy-item/apple
+
+2.   localhost:8080/buy-item-qty/:item
+Eg.: localhost:8080/buy-item-qty/apple?quantity=9
+
+3.   localhost:8080/buy-item-qty-price/:item
+Eg.: localhost:8080/buy-item-qty-price/apple?quantity=10&price=100
+
+4.   localhost:8080/show-summary
+
+5.   localhost:8080/fast-buy-item/:item
+Eg.: localhost:8080/fast-buy-item/apple

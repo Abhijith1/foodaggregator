@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// makeGetCall makes a http call and returns the response
 func makeGetCall(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
