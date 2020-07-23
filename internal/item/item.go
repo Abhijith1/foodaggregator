@@ -193,8 +193,8 @@ func (o *Order) FastBuyItem() Item {
 	// 3 separate channels for each of the suppliers
 	itemFruits, itemVegetables, itemGrains := make(chan *Item), make(chan *Item), make(chan *Item)
 	go o.checkFruitsForFastBuy(itemFruits)
-	go o.checkVegesForFastBuy(itemFruits)
-	go o.checkGrainsForFastBuy(itemFruits)
+	go o.checkVegesForFastBuy(itemVegetables)
+	go o.checkGrainsForFastBuy(itemGrains)
 
 	// A for loop which iterates 3 times is created since there are 3 suppliers
 	// If channel holds non-nil value, return the item then and there without waiting for all the go routines to complete
